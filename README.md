@@ -2,7 +2,7 @@
 
 A collaborative system
 
-## Contributor
+## Contributors
 
 FJ
 Aljake
