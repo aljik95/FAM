@@ -1,0 +1,43 @@
+.navbar-preview {
+    border-bottom: 3px solid #e3841e;
+    min-height: 25px;
+    background: #ffffff;
+    font-size: 12px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.fixed-top {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
+
+.navbar {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+}
+
+.sys-logo-con{
+    width: 33.33%;
+    height: 100%;
+}
+
+.sys-logo{
+    width:65px;
+    height:42px;
+    border-radius: 20px;
+}

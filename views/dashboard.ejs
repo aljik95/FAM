@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <script src="/js/system/jquery-1.9.1.js"></script>
+    <script src="/js/system/jquery-ui-1.10.3.custom.js"></script>
+    <script src="/js/system/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="/js/system/panel.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/css/system/global.css">
+    <link rel="stylesheet" type="text/css" href="/css/system/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="/css/system/nav-bar.css">
+
+    
+<body>
+    
+    <%- include('./partials/nav.ejs')%>
+    
+   <div class="main-container">
+
+
+        <div class="panel">
+            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;<%=fname%> <span class="caret"></span></a>
+
+            <ul>
+            <% for(var i=0; i < jsonAccess.length; i++) { %>
+                <li><button class="itm-src" value="<%= jsonAccess[i].Code%>"><%= jsonAccess[i].Description%></button></li>
+            <% } %>
+            </ul>
+        </div>
+
+        <div class="items">
+            <iframe class="frame-item" src="" title="description"></iframe>
+        </div>
+
+   </div>
+   
+
+</body>
+</html>

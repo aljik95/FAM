@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<script src="/js/system/jquery-1.9.1.js"></script>
+<script src="/js/system/jquery-ui-1.10.3.custom.js"></script>
+<script src="/js/system/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="/js/vw_js/add_account.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/global.css">
+<link rel="stylesheet" type="text/css" href="/css/create-user.css">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>RM Refilling Station | <%=title%></title>
+<body>
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+          <!-- Tabs Titles -->
+          <a id="sIN" class="inactive underlineHover" href="/login"> Home </a>
+          <h2 id="sUP" class="active">Add User</h2>
+      
+          <!-- Icon -->
+          <div class="fadeIn first">
+            <img class="reg-img" src="/images/logo-test.jpg" alt="tanis mencion" >
+          </div>
+      
+          <!-- Create Form -->
+          <form id="Create-Form">
+            <input type="text" id="username" class="fadeIn second" name="username" autocomplete="off" placeholder="User Id" required>
+            <input type="text" id="description" class="fadeIn second" name="description" autocomplete="off" placeholder="Full Name" required>
+            <input type="password" id="password" class="log-in fadeIn third" name="password" autocomplete="off" placeholder="Password" required><br>
+            <input type="password" id="con_password" class="log-in fadeIn third" name="con_password" autocomplete="off" placeholder="Confirmed Password" required><br><br>
+            <label id="lblmsg"></label><br><br>
+
+            <input type="submit" class="fadeIn fourth" value="Create User">
+         
+          </form>
+
+          <script>
+            const logIn = document.getElementById('Create-Form')
+
+            logIn.addEventListener('submit',validateUser)
+
+            async function validateUser(e){
+                e.preventDefault();
+                const username = document.getElementById('username').value
+                const password = document.getElementById('password').value
+                const description = document.getElementById('description').value
+                const con_password = document.getElementById('con_password').value
+
+                if(password != con_password){
+                  isErr();
+                  $('#lblmsg').text("Password doesn't match.")
+                }else{
+                    const result = await fetch('/add_account/save_user',{
+                        method: 'POST',
+                        
+                        headers: {'Content-Type':'application/json'},
+                        body: JSON.stringify({username,password,description}) 
+                    })
+                    .then((res) =>res.json())
+                    .catch((err) => console.log(err));
+
+                    if(result.status === 'ok'){
+                      isOk();
+                      $('#lblmsg').text(result.msg)
+                    }else{
+                      isErr();
+                      $('#lblmsg').text(result.msg)
+                    }
+                }
+            }
+            
+
+          </script>   
+        </div>
+      </div>
+</body>
+</html>

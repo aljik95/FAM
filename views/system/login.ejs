@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<script src="/js/system/jquery-1.9.1.js"></script>
+<script src="/js/system/jquery-ui-1.10.3.custom.js"></script>
+<script src="/js/system/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="/js/vw_js/system/login.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/css/system/global.css">
+<link rel="stylesheet" type="text/css" href="/css/system/login-user.css">
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>RM Refilling Station | <%=title%></title>
+    
+<body>
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+          <!-- Tabs Titles -->
+          <h2 id="sIN" class="active"> Sign In </h2>
+         
+      
+          <!-- Icon -->
+          <div class="fadeIn first">
+            <img class="reg-img" src="/images/logo-test.jpg" alt="tanis mencion" >
+          </div>
+      
+          <!-- Create Form -->
+          <form id="Login-Form">
+            <input type="text" id="username" class="fadeIn second" name="username" autocomplete="off" placeholder="USERNAME" required>
+            <input type="password" id="password" class="log-in fadeIn third" name="password" autocomplete="off" placeholder="PASSWORD" required><br><br>
+            <label id="lblmsg"></label><br><br>
+            <input type="submit" class="fadeIn fourth" value="Log In">
+          </form>
+      
+          <!-- Remind Passowrd -->
+          <!-- <div id="formFooter">
+            <a class="underlineHover" href="#">Forgot Password?</a>
+          </div> -->
+
+          <script>
+            const logIn = document.getElementById('Login-Form')
+
+            logIn.addEventListener('submit',validateUser)
+        
+
+            async function validateUser(e){
+                e.preventDefault();
+                const username = document.getElementById('username').value
+                const password = document.getElementById('password').value
+
+                    const result = await fetch('/system/login/login_user',{
+                        method: 'POST',
+                        headers: {'Content-Type':'application/json'},
+                        body: JSON.stringify({username,password}) 
+                    })
+                    .then((res) =>res.json())
+                    .catch((err) => console.log(err));
+
+                    if(result.appStatus === 'error'){
+                      isErr();
+                      $('#lblmsg').text(result.msg)
+                    } 
+       
+                    if(result.id){
+                       location.assign('/Dashboard')
+                    }
+            }
+
+            // $(document).on('click','#sUP', function(){
+            //   location.assign('/create_account')
+            // })
+            </script>
+        
+          </div>
+        </div>
+</body>
+</html>

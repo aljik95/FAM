@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+    <script src="/js/system/jquery-1.9.1.js"></script>
+    <script src="/js/system/jquery-ui-1.10.3.custom.js"></script>
+    <script src="/js/system/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="/js/system/panel.js"></script>
+    <script src="/js/HRIS/Employee201.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/css/system/global.css">
+    <link rel="stylesheet" type="text/css" href="/css/system/item-css.css">
+    <link rel="stylesheet" type="text/css" href="/css/HRIS/Employee201.css">
+    
+<body>
+    
+   <div class="main-container">
+    <form action="">
+        <fieldset class="main-field">
+            <legend>Employee 201</legend>
+            <div class="item-container">
+                <div class="container">
+
+                    <div class="emp-simpdtl sys-row">
+                        <div class="emp-simpdtl-img-con sys-col">
+                            <img class="emp-simpdtl-img" src="/images/HRIS/Employee201/place-holder.png" alt="Employee">
+                        </div>
+
+                        <div class="emp-simpdtl-dtl sys-col">
+
+                            <div class="item-row item-row-top sys-row">
+                                <div class="sys-col"></div>   
+                                <img class="personnal-logo" src="/images/HRIS/Employee201/personnal-logo.png" alt="Employee"> 
+                                <legend class="logo-title">Personal Information</legend>
+                            </div>   
+
+                            <div class="item-row sys-row">   
+                                <div class="titlefields sys-col titlefields-uls">Name</div>
+                                <div class="valuefields sys-col valuefields-urs"><%= results[0].fullname %></div>
+                            </div>      
+
+                            <div class="item-row sys-row">   
+                                <div class="titlefields sys-col">Company</div>
+                                <div class="valuefields sys-col"><%= results[0].company %></div>
+                            </div>                           
+                           
+                            <div class="item-row sys-row">   
+                                <div class="titlefields sys-col">Age</div>
+                                <div class="valuefields sys-col"><%= results[0].age %></div>
+                            </div>      
+                 
+                            <div class="item-row sys-row">   
+                                <div class="titlefields sys-col">Birthdate</div>
+                                <div class="valuefields sys-col"><%= results[0].birthdate %></div>
+                            </div>      
+                  
+                            <div class="item-row sys-row">   
+                                <div class="titlefields sys-col">Civil Status</div>
+                                <div class="valuefields sys-col"><%= results[0].civilstatus %></div>
+                            </div>  
+                            
+                            <div class="item-row sys-row">   
+                                <div class="titlefields sys-col">Religion</div>
+                                <div class="valuefields sys-col"><%= results[0].religion %></div>
+                            </div> 
+
+                            <div class="item-row sys-row">   
+                                <div class="titlefields sys-col">Nationality</div>
+                                <div class="valuefields sys-col"><%= results[0].nationality %></div>
+                            </div> 
+                   
+                            <div class="item-row sys-row">   
+                                <div class="titlefields sys-col titlefields-ble">Status</div>
+                                <div class="valuefields sys-colv valuefields-bre"><%= results[0].fullname %></div>
+                            </div>      
+               
+                        </div>
+
+                        <div class="emp-simpdtl-dtl sys-col">
+
+                            <div class="item-row item-row-top sys-row">
+                                <div class="sys-col"></div>   
+                                <img class="contact-logo" src="/images/HRIS/Employee201/contact-logo.png" alt="Employee">
+                                <legend class="logo-title">Contact Information</legend>
+                            </div>   
+
+                            <div class="item-row sys-row">   
+                                <div class="titlefields sys-col">Address</div>
+                                <div class="valuefields sys-col"><%= results[0].fullname %></div>
+                            </div>      
+
+                            <div class="item-row sys-row">   
+                                <div class="titlefields sys-col">Mobile No.</div>
+                                <div class="valuefields sys-col"><%= results[0].fullname %></div>
+                            </div>                           
+                           
+                            <div class="item-row sys-row">   
+                                <div class="titlefields sys-col">Phone No.</div>
+                                <div class="valuefields sys-col"><%= results[0].fullname %></div>
+                            </div>      
+                            
+                            <div class="item-row sys-row">   
+                                <div class="titlefields sys-col">Email</div>
+                                <div class="valuefields sys-col"><%= results[0].fullname %></div>
+                            </div>
+
+                            <br>
+                            <div class="item-row sys-row">   
+                                <div class="sys-col">
+                                    <a class ='emp-details' href="/HRIS/employee_details/11">
+                                        <button type='button' class="btnView btnViewMore" id="btnView" onClick="reply_click('1111')" style="vertical-align:middle">
+                                            <span>Details</span>
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>        
+                            
+                            
+               
+                        </div>
+                      
+                    </div>
+
+                    <div class="emp-srch">
+                        <input type="search" id="query" name="q" placeholder="Search...">
+                        <button>Search</button>
+                    </div>
+
+                    <div class="emp-list-add">
+                        <img class="emp-add" src="/images/HRIS/Employee201/emp-add.png" alt="Employee">
+                        <a class ='emp-details' href="/HRIS/Employee201/employee_add"><button type='button' class="btnView-add" id="btnView" onClick="reply_click('1111')" style="vertical-align:middle"><span>Add Customer</span></button></a>
+                       
+                    </div>
+                    <script>
+                        result = '<%- JSON.stringify(results)%>';
+                        result = JSON.parse(result);
+                     </script>
+                    <% if(results.length > 0) { %>
+                        <% for(var i=0; i < results.length; i++) { %>
+                            <tr>
+                                <div class="emp-list">
+                                    <img class="emp-img" src="/images/HRIS/Employee201/emp-logo.png" alt="alt employee">
+                                    <p class="name"><%= results[i].lastname + ', ' + results[i].firstname + ' ' + results[i].middlename%></p>
+                                    <p class="company"><%= results[i].company%></p>
+                                    <p class="date"><%= results[i].datehired.toISOString().slice(0, 10)%></p>
+                                    <p class="date"><%= results[i].recdate.toISOString().slice(0, 10)%></p>
+                                    <a class ='emp-details' href="/HRIS/employee_details/<%=results[i].code%>"><button type='button' class="btnView" id="btnView" onClick="reply_click('<%=results[i].code%>')" style="vertical-align:middle"><span>Details</span></button></a>
+                                </div>
+                            </tr>
+                         <% } %>
+                    <%}%>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+   </div>
+   
+
+</body>
+</html>
